@@ -7,8 +7,8 @@ package gst
 import "C"
 
 import (
+	"github.com/greenkeytech/glib"
 	"unsafe"
-	"github.com/ziutek/glib"
 )
 
 type GstObj struct {
@@ -78,4 +78,3 @@ func (o *GstObj) ImplementsInterfaceCast(typ glib.Type) glib.Pointer {
 	return glib.Pointer(C.gst_implements_interface_cast(C.gpointer(o.GetPtr()),
 		C.GType(typ)))
 }*/
-

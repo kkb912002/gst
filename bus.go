@@ -7,7 +7,7 @@ package gst
 import "C"
 
 import (
-	"github.com/ziutek/glib"
+	"github.com/greenkeytech/glib"
 )
 
 type Bus struct {

@@ -11,8 +11,8 @@ int capsRefCount(GstCaps *c) {
 import "C"
 
 import (
+	"github.com/greenkeytech/glib"
 	"unsafe"
-	"github.com/ziutek/glib"
 )
 
 type Caps C.GstCaps
@@ -66,4 +66,3 @@ func CapsFromString(s string) *Caps {
 	defer C.free(unsafe.Pointer(cs))
 	return (*Caps)(C.gst_caps_from_string(cs))
 }
-
