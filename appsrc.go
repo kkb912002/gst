@@ -46,11 +46,11 @@ func (f FlowReturn) String() string {
 }
 
 type AppSrc struct {
-	*gst.Element
+	*Element
 }
 
 func NewAppSrc(name string) *AppSrc {
-	element := gst.ElementFactoryMake("appsrc", name)
+	element := ElementFactoryMake("appsrc", name)
 
 	element.SetProperty("is-live", true)
 	element.SetProperty("block", true)
@@ -62,7 +62,7 @@ func (a *AppSrc) g() *C.GstAppSrc {
 	return (*C.GstAppSrc)(a.GetPtr())
 }
 
-func (a *AppSrc) SetCaps(caps *gst.Caps) {
+func (a *AppSrc) SetCaps(caps *Caps) {
 	p := unsafe.Pointer(caps) // HACK
 	C.gst_app_src_set_caps(a.g(), (*C.GstCaps)(p))
 }
