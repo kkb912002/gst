@@ -7,8 +7,9 @@ package gst
 import "C"
 
 import (
-	"github.com/greenkeytech/glib"
 	"unsafe"
+
+	"github.com/greenkeytech/glib"
 )
 
 type Pipeline struct {
@@ -21,6 +22,10 @@ func (p *Pipeline) g() *C.GstPipeline {
 
 func (p *Pipeline) AsPipeline() *Pipeline {
 	return p
+}
+
+func (p *Pipeline) Free() {
+	C.g_object_unref(C.gpointer(p.g()))
 }
 
 func NewPipeline(name string) *Pipeline {

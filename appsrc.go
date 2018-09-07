@@ -50,12 +50,7 @@ type AppSrc struct {
 }
 
 func NewAppSrc(name string) *AppSrc {
-	element := ElementFactoryMake("appsrc", name)
-
-	element.SetProperty("is-live", true)
-	element.SetProperty("block", true)
-
-	return &AppSrc{element}
+	return &AppSrc{ElementFactoryMake("appsrc", name)}
 }
 
 func (a *AppSrc) g() *C.GstAppSrc {
@@ -69,7 +64,7 @@ func (a *AppSrc) SetCaps(caps *Caps) {
 
 func (a *AppSrc) EOS() error {
 	ret := FlowReturn(C.gst_app_src_end_of_stream(a.g()))
-	if FlowReturn(ret) != GST_FLOW_OK {
+	if ret != GST_FLOW_OK {
 		return fmt.Errorf("appsrc eos: %v", ret)
 	}
 
