@@ -1,6 +1,6 @@
 ### Go bindings for GStreamer at a very early stage of maturity.
 
-This package is based on [GLib bindings](https://github.com/greenkeytech/glib). It
+This package is based on [GLib bindings](https://github.com/lijo-jose/glib). It
 should be goinstalable. Try
 
     $ go get github.com/ziutek/gst

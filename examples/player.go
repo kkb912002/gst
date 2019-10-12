@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/greenkeytech/gst"
-	"github.com/greenkeytech/gtk"
+	"github.com/lijo-jose/gst"
+	"github.com/lijo-jose/gtk"
 )
 
 type Player struct {

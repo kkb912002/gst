@@ -44,7 +44,7 @@ import (
 	"os"
 	"unsafe"
 
-	"github.com/greenkeytech/glib"
+	"github.com/lijo-jose/glib"
 )
 
 func v2g(v *glib.Value) *C.GValue {
