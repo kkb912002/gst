@@ -71,6 +71,10 @@ func (a *AppSrc) EOS() error {
 	return nil
 }
 
+func (b *AppSrc) PushBuffer(buffer *Buffer) int {
+	return (int)(C.gst_app_src_push_buffer((*C.GstAppSrc)(b.g()), (*C.GstBuffer)(buffer.GstBuffer)))
+}
+
 func (a *AppSrc) Write(d []byte) (int, error) {
 	buf := C.gst_buffer_new_allocate(nil, C.gsize(len(d)), nil)
 	n := C.gst_buffer_fill(buf, C.gsize(0), (C.gconstpointer)(C.CBytes(d)), C.gsize(len(d)))
