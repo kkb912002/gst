@@ -61,6 +61,11 @@ func (this *Buffer) MemSet(offset uint, val byte, size uint) int {
 	return (int)(C.gst_buffer_memset((*C.GstBuffer)(this.GstBuffer), C.gsize(offset), C.guint8(val), C.gsize(size)))
 }
 
+func (this *Buffer) FillWithGoSlice(data []byte) int {
+	dataLength := uint(len(data))
+	return (int)(C.gst_buffer_fill((*C.GstBuffer)(this.GstBuffer), C.gsize(0), (C.gconstpointer)(C.CBytes(data)), C.gsize(dataLength)))
+}
+
 func (this *Buffer) Fill(offset uint, src unsafe.Pointer, size uint) int {
 	return (int)(C.gst_buffer_fill((*C.GstBuffer)(this.GstBuffer), C.gsize(offset), C.gconstpointer(src), C.gsize(size)))
 }
