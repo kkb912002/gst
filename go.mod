@@ -1,4 +1,4 @@
-module github.com/lijo-jose/gst
+module github.com/danielpaulus/gst
 
 go 1.12
 
