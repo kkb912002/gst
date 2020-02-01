@@ -92,6 +92,11 @@ func (e *Element) LinkPads(pad_name string, dst *Element, dst_pad_name string) b
 	return C.gst_element_link_pads(e.g(), src_pname, dst.g(), dst_pname) != 0
 }
 
+// https://developer.gnome.org/gstreamer/stable/GstElement.html#gst-element-send-event
+func (e *Element) SendEvent(event *Event) bool{
+	return C.gst_element_send_event(e.g(), (*C.GstEvent)(event.GstEvent)) != 0
+}
+
 func (e *Element) UnlinkPads(pad_name string, dst *Element, dst_pad_name string) {
 	src_pname := (*C.gchar)(C.CString(pad_name))
 	defer C.free(unsafe.Pointer(src_pname))
