@@ -124,7 +124,7 @@ func (e *Element) AddPad(p *Pad) bool {
 func (e *Element) GetRequestPad(name string) *Pad {
 	s := (*C.gchar)(C.CString(name))
 	defer C.free(unsafe.Pointer(s))
-	cp := C.gst_element_get_request_pad(e.g(), s)
+	cp := C.gst_element_request_pad_simple(e.g(), s)
 	if cp == nil {
 		return nil
 	}
